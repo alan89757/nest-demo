@@ -1,20 +1,50 @@
-import { Body, Controller, Get, HttpStatus, Post, Res, Response } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpStatus,
+  Post,
+  Res,
+  Response,
+} from '@nestjs/common';
 import { of, Observable } from 'rxjs';
+import { CatsService } from './cats.service';
 import { CreateCatDto } from './create-cat.dto';
+import { Cat } from './interface/cat.interface';
+import { HttpService } from '../http/http.service';
 // import { Request } from 'express';
 
 @Controller('cats')
 export class CatsController {
-  @Post()
-  create(@Res() res: Response) {
-    // res.status(HttpStatus.CREATED).send();
-  }
+  constructor(private catService: CatsService) {}
   @Get()
-  findAll(@Res() res: Response) {
-    console.log(HttpStatus.FORBIDDEN);
-    return 'hello world';
-    // res.status(HttpStatus.Ok).join([]);
+  findAll() {
+    console.log(this.catService);
+    // console.log(this.httpService);
+    return 'all cats';
   }
+  // @Post()
+  // async create(@Body() createCatDto: CreateCatDto) {
+  //   this.catService.create(createCatDto);
+  // }
+  // @Get()
+  // async findAll(): Promise<Cat[]> {
+  //   return this.catService.findAll();
+  // }
+  // @Get()
+  // findAll() {
+  //   return 'return all cats';
+  // }
+  // @Post()
+  // create(@Res() res: Response) {
+  //   // res.status(HttpStatus.CREATED).send();
+  // }
+  // @Get()
+  // findAll(@Res() res: Response) {
+  //   console.log(HttpStatus.FORBIDDEN);
+  //   return 'hello world';
+  //   // res.status(HttpStatus.Ok).join([]);
+  // }
   // @Post()
   // async create(@Body() createCatDto: CreateCatDto) {
   //   return 'cat dto';
