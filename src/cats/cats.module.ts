@@ -5,9 +5,9 @@ import { CatsController } from './cats.controller';
 import { HttpModule } from 'src/http/http.module';
 
 @Module({
-  imports: [],
+  imports: [HttpModule],
   controllers: [CatsController],
-  providers: [HttpService],
-  exports: [],
+  providers: [CatsService],
+  exports: [CatsService, HttpModule],
 })
 export class CatsModule {}
