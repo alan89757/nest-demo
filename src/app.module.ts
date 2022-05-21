@@ -5,10 +5,12 @@ import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { HttpService } from './http/http.service';
 import { HttpModule } from './http/http.module';
+import { CatsService } from './cats/cats.service';
+import { DogModule } from './dog/dog.module';
 
 @Module({
-  imports: [CatsModule, HttpModule],
-  controllers: [AppController, CatsController],
-  providers: [AppService, HttpService],
+  imports: [CatsModule, DogModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

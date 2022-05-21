@@ -16,10 +16,12 @@ import { HttpService } from '../http/http.service';
 
 @Controller('cats')
 export class CatsController {
-  constructor(private catService: CatsService) {}
+  constructor(private httpService: HttpService) {
+    console.log(111);
+  }
   @Get()
   findAll() {
-    console.log(this.catService);
+    // console.log(this.httpService);
     // console.log(this.httpService);
     return 'all cats';
   }

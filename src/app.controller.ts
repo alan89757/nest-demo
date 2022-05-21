@@ -1,12 +1,16 @@
 import { Controller, Get, HostParam } from '@nestjs/common';
 import { AppService } from './app.service';
+import { CatsService } from './cats/cats.service';
 
-@Controller(':account.localhost')
+@Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {
+    console.log(111);
+  }
   @Get()
   getInfo(@HostParam('account') account: string) {
     // return '123';
+    // console.log(this.catsService);
     console.log(account);
     return account;
   }
