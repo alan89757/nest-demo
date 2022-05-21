@@ -8,9 +8,10 @@ import { HttpModule } from './http/http.module';
 import { DogsModule } from './dogs/dogs.module';
 import { TigerService } from './tiger/tiger.service';
 import { TigerModule } from './tiger/tiger.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [CatsModule, HttpModule, DogsModule, TigerModule],
+  imports: [CatsModule, HttpModule, DogsModule, TigerModule, DatabaseModule],
   controllers: [AppController, CatsController],
   providers: [AppService, HttpService, TigerService],
 })
