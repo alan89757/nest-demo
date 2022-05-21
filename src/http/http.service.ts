@@ -1,7 +1,7 @@
 import { Inject, Injectable, Optional } from '@nestjs/common';
 
 @Injectable()
-export class HttpService<T> {
+export class HttpService {
   // constructor(
   //   @Optional() @Inject('HTTP_OPTIONs') private readonly httpClient: T,
   // ) {
