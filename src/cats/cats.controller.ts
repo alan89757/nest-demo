@@ -1,30 +1,40 @@
 import {
   Body,
   Controller,
+  ForbiddenException,
   Get,
   HttpStatus,
   Post,
   Res,
   Response,
+  UseFilters,
 } from '@nestjs/common';
 import { of, Observable } from 'rxjs';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './create-cat.dto';
 import { Cat } from './interface/cat.interface';
 import { HttpService } from '../http/http.service';
+import { HttpExceptionFilter } from 'src/exceptions/http-exception.filter';
 // import { Request } from 'express';
 
 @Controller('cats')
 export class CatsController {
-  constructor(private httpService: HttpService) {
-    console.log(111);
-  }
   @Get()
-  findAll() {
-    // console.log(this.httpService);
-    // console.log(this.httpService);
-    return 'all cats';
+  // @UseFilters(new HttpExceptionFilter())
+  @UseFilters(HttpExceptionFilter)
+  async create(@Body() createCatDto: CreateCatDto) {
+    console.log(555);
+    throw new ForbiddenException();
   }
+  // constructor(private httpService: HttpService) {
+  //   console.log(111);
+  // }
+  // @Get()
+  // findAll() {
+  //   // console.log(this.httpService);
+  //   // console.log(this.httpService);
+  //   return 'all cats';
+  // }
   // @Post()
   // async create(@Body() createCatDto: CreateCatDto) {
   //   this.catService.create(createCatDto);

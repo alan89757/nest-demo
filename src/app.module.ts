@@ -17,11 +17,21 @@ import { TigerService } from './tiger/tiger.service';
 import { TigerModule } from './tiger/tiger.module';
 import { DatabaseModule } from './database/database.module';
 import { LoggerMiddleware } from './common/logger.middleware';
+import { APP_FILTER } from '@nestjs/core';
+import { HttpExceptionFilter } from './exceptions/http-exception.filter';
 
 @Module({
   imports: [CatsModule, HttpModule, DogsModule, TigerModule, DatabaseModule],
   controllers: [AppController, CatsController],
-  providers: [AppService, HttpService, TigerService],
+  providers: [
+    AppService,
+    HttpService,
+    TigerService,
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
