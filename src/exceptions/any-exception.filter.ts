@@ -8,7 +8,8 @@ import {
 import { BaseExceptionFilter } from '@nestjs/core';
 
 @Catch()
-export class AllExceptionsFilter extends BaseExceptionFilter {  // extends
+export class AllExceptionsFilter extends BaseExceptionFilter {
+  // extends
   catch(exception: unknown, host: ArgumentsHost) {
     super.catch(exception, host);
   }
@@ -31,4 +32,3 @@ export class AllExceptionsFilter extends BaseExceptionFilter {  // extends
 //     });
 //   }
 // }
-

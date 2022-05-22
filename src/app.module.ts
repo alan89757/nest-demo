@@ -17,8 +17,9 @@ import { TigerService } from './tiger/tiger.service';
 import { TigerModule } from './tiger/tiger.module';
 import { DatabaseModule } from './database/database.module';
 import { LoggerMiddleware } from './common/logger.middleware';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { HttpExceptionFilter } from './exceptions/http-exception.filter';
+import { ValidationPipe } from './validate/validate.pipe';
 
 @Module({
   imports: [CatsModule, HttpModule, DogsModule, TigerModule, DatabaseModule],
@@ -30,6 +31,10 @@ import { HttpExceptionFilter } from './exceptions/http-exception.filter';
     {
       provide: APP_FILTER,
       useClass: HttpExceptionFilter,
+    },
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
     },
   ],
 })
