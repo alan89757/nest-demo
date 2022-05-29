@@ -20,22 +20,28 @@ import { LoggerMiddleware } from './common/logger.middleware';
 import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { HttpExceptionFilter } from './exceptions/http-exception.filter';
 import { ValidationPipe } from './validate/validate.pipe';
+import { JoiValidationPipe } from './pipe/joi-validation.pipe';
+import { LionModule } from './lion/lion.module';
 
 @Module({
-  imports: [CatsModule, HttpModule, DogsModule, TigerModule, DatabaseModule],
+  imports: [LionModule],
   controllers: [AppController, CatsController],
   providers: [
     AppService,
     HttpService,
     TigerService,
-    {
-      provide: APP_FILTER,
-      useClass: HttpExceptionFilter,
-    },
-    {
-      provide: APP_PIPE,
-      useClass: ValidationPipe,
-    },
+    // {
+    //   provide: APP_FILTER,
+    //   useClass: HttpExceptionFilter,
+    // },
+    // {
+    //   provide: APP_PIPE,
+    //   useClass: ValidationPipe,
+    // },
+    // {
+    //   provide: APP_PIPE,
+    //   useClass: JoiValidationPipe,
+    // },
   ],
 })
 export class AppModule implements NestModule {

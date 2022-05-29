@@ -5,7 +5,7 @@ import { CatsService } from './cats/cats.service';
 @Controller()
 export class AppController {
   constructor() {
-    console.log(111);
+    // console.log(111);
   }
   @Get()
   getInfo(@HostParam('account') account: string) {
