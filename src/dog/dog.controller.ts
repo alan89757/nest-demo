@@ -14,16 +14,13 @@ import { HttpService } from 'src/http/http.service';
 
 @Controller('dog')
 export class DogController {
-  constructor(
-    private catsService: CatsService,
-    private httpService: HttpService,
-  ) {
+  constructor() {
     console.log(333);
   }
   @Get()
   // @UsePipes(new JoiValidationPipe(createCatSchema))
   async create(@Body(new ValidationPipe()) createCatDto: CreateCatDto) {
-    this.catsService.create(createCatDto);
+    // this.catsService.create(createCatDto);
   }
   // @Get(':/id')
   // findOne(@Param('id', UserByIdPipe) userEntity: UserEntity) {

@@ -1,4 +1,4 @@
-import { types } from '@hapi/joi';
+import { types } from 'joi';
 import {
   ArgumentMetadata,
   BadRequestException,

@@ -7,6 +7,7 @@ import {
   Post,
   UsePipes,
 } from '@nestjs/common';
+import { ObjectSchema } from 'joi';
 import { CreateLionDto } from './create-lion.dto';
 import { LionService } from './lion.service';
 import { JoiValidationPipe } from '../pipe/joi-validation.pipe';
@@ -17,6 +18,7 @@ export class LionController {
     // console.log(222);
   }
   @Get('/pipe-demo/:id')
+  @UsePipes(JoiValidationPipe)
   getLion(@Param() createDto: JoiValidationPipe) {
     console.log(createDto);
     return createDto;

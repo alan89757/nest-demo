@@ -1,21 +1,30 @@
-import { Controller, Get, HostParam } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CatsService } from './cats/cats.service';
+import { JoiValidationPipe } from './pipe/joi-validation.pipe';
 
-@Controller()
+@Controller('/app')
 export class AppController {
   constructor() {
     // console.log(111);
   }
-  @Get()
-  getInfo(@HostParam('account') account: string) {
-    // return '123';
-    // console.log(this.catsService);
-    console.log(account);
-    return account;
+  @Get(':id')
+  getInfo(@Param('id', JoiValidationPipe) id: number) {
+    console.log(id);
+    return 'hello world !';
   }
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
+  @Get()
+  getHello(): object {
+    return {
+      a: 1,
+      b: 2,
+    };
+  }
+  @Post()
+  getForm() {
+    return {
+      c: 3,
+      d: 4,
+    };
+  }
 }

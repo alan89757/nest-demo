@@ -19,22 +19,22 @@ import { HttpExceptionFilter } from 'src/exceptions/http-exception.filter';
 
 @Controller('cats')
 export class CatsController {
-  @Get()
-  // @UseFilters(new HttpExceptionFilter())
-  @UseFilters(HttpExceptionFilter)
-  async create(@Body() createCatDto: CreateCatDto) {
-    console.log(555);
-    throw new ForbiddenException();
-  }
+  // @Get()
+  // // @UseFilters(new HttpExceptionFilter())
+  // @UseFilters(HttpExceptionFilter)
+  // async create(@Body() createCatDto: CreateCatDto) {
+  //   console.log(555);
+  //   throw new ForbiddenException();
+  // }
   // constructor(private httpService: HttpService) {
   //   console.log(111);
   // }
-  // @Get()
-  // findAll() {
-  //   // console.log(this.httpService);
-  //   // console.log(this.httpService);
-  //   return 'all cats';
-  // }
+  @Get()
+  findAll() {
+    // console.log(this.httpService);
+    // console.log(this.httpService);
+    return 'all cats';
+  }
   // @Post()
   // async create(@Body() createCatDto: CreateCatDto) {
   //   this.catService.create(createCatDto);

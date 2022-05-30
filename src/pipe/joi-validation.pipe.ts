@@ -1,17 +1,14 @@
-import { ArgumentMetadata, BadRequestException } from '@nestjs/common';
-import { Injectable, PipeTransform } from '@nestjs/common';
-import { ObjectSchema } from '@hapi/joi';
+import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
+import { HttpService } from '../http/http.service';
+import { ObjectSchema } from 'joi';
+import { LionService } from '../lion/lion.service';
 
 @Injectable()
 export class JoiValidationPipe implements PipeTransform {
-  constructor(private schema: ObjectSchema) {}
-
+  constructor() {}
   transform(value: any, metadata: ArgumentMetadata) {
-    const { error } = this.schema.validate(value);
-    if (error) {
-      throw new BadRequestException('Invalid Input Data');
-    }
-
+    console.log(111, value);
+    // const { error } = this.schema.validate(value);
     return value;
   }
 }
